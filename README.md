@@ -4,6 +4,7 @@
 - [Name] - [GitHub Username]
 - [Name] - [GitHub Username]
 - [Name] - [GitHub Username]
+- [Name] - [GitHub Username]
 ## Project Description
 Brief description of the Connect platform and what this project
 implements. (Refer to BMC document)
@@ -17,6 +18,19 @@ implements. (Refer to BMC document)
 - CSS3 (Flexbox, Grid, Media Queries)
 - Git & GitHub
 - GitHub Pages
+## 📂 Repository Structure
+The template includes the following structure:
+
+```
+📦create_website
+ ┣ 📂css/         
+ ┣ 📂images/  
+ ┣ projects.html    
+ ┣ index.html
+ ┣ student-dashboard.html
+ ┣ company-dashboard.html         
+ ┣ 📜README.md
+```
 ## Individual Contributions Sample
 ### [Team Member 1 Name]
 - Implemented landing page HTML structure
@@ -30,3 +44,7 @@ implements. (Refer to BMC document)
 - Implemented hero section styling
 - Made site responsive for mobile devices
 - [List other specific contributions]
+### [Team Member 4 Name]
+-
+-
+-
