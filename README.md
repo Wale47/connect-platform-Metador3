@@ -2,7 +2,7 @@
 ## Team Name/Number: Metador3
 ## Team Members
 - Dang Huy Nguyen - DangNguyen0505
-- [Name] - [GitHub Username]
+- Daniel Onwudinanti - DanielOnwudinanti
 - [Name] - [GitHub Username]
 - [Name] - [GitHub Username]
 ## Project Description
