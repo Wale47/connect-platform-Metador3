@@ -1,13 +1,12 @@
 # Connect Platform - Project 2
-## Team Name/Number: [Your Team Name]
+## Team Name/Number: Metador3
 ## Team Members
-- [Name] - [GitHub Username]
+- Dang Huy Nguyen - DangNguyen0505
 - [Name] - [GitHub Username]
 - [Name] - [GitHub Username]
 - [Name] - [GitHub Username]
 ## Project Description
-Brief description of the Connect platform and what this project
-implements. (Refer to BMC document)
+A connect platform that helps students find internships/jobs.
 ## Pages Implemented
 1. Landing Page (index.html)
 2. Student Dashboard (student-dashboard.html)
@@ -31,11 +30,10 @@ The template includes the following structure:
  ┣ company-dashboard.html         
  ┣ 📜README.md
 ```
-## Individual Contributions Sample
-### [Team Member 1 Name]
-- Implemented landing page HTML structure
-- Created responsive navigation bar
-- [List other specific contributions]
+## Individual Contributions
+### Dang Huy Nguyen
+- Created github repo
+- 
 ### [Team Member 2 Name]
 - Designed and implemented color scheme
 - Created footer component
