@@ -2075,7 +2075,7 @@ select.success {
     
     /* FLEXBOX for vertical layout */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     
     /* TRANSITION for hover */
@@ -2364,6 +2364,8 @@ select.success {
     .steps {
         grid-template-columns: 1fr;
     }
+
+    
 }
 
 /* TABLET SPECIFIC (max-width: 768px) */
@@ -2427,6 +2429,10 @@ select.success {
         width: 100%;
         justify-content: center;
         margin-top: 0.5rem;
+    }
+
+    .profile-section {
+        flex-direction: column;
     }
 }
 
@@ -2498,6 +2504,9 @@ select.success {
     .pagination .page-number:nth-child(n+4):nth-child(-n+6) {
         display: none;
     }
+
+
+
 }
 
 /* LARGE DESKTOP (min-width: 1400px) */
