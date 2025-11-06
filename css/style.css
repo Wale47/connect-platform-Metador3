@@ -56,8 +56,8 @@
 
 :root {
     /* PRIMARY COLORS - Main brand colors used throughout the site */
-    --primary-color: #2563eb;      /* Blue - Used for main actions, links, emphasis */
-    --secondary-color: #7c3aed;    /* Purple - Used for secondary actions, accents */
+    --primary-color: #F4B0DD;      /* Blue - Used for main actions, links, emphasis */
+    --secondary-color: #5FBBDD;    /* Purple - Used for secondary actions, accents */
     
     /* TEXT COLORS - For readability and hierarchy */
     --text-dark: #1f2937;          /* Dark gray - Main body text, headings */
@@ -831,12 +831,12 @@ button {
 .column {
     /* TODO: Add styling to columns
        HINT: You might want to add padding, background, or borders
-       EXAMPLE:
+       EXAMPLE:*/
        padding: 2rem;
        background: white;
        border-radius: var(--radius-lg);
        box-shadow: var(--shadow-sm);
-    */
+       text-align: center;    
 }
 
 /* COLUMN HEADINGS */
@@ -864,7 +864,7 @@ button {
 /* CUSTOM BULLET POINT
    ::before creates a pseudo-element before the content */
 .benefits-list li::before {
-    content: "âœ“";           /* Checkmark character */
+    content: "";           /* Checkmark character */
     /* POSITIONING
        Absolute positioning relative to parent (li) */
     position: absolute;
