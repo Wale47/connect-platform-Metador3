@@ -3,7 +3,7 @@
 ## Team Members
 - Dang Huy Nguyen - DangNguyen0505
 - Daniel Onwudinanti - DanielOnwudinanti
-- [Name] - [GitHub Username]
+- Wale Fadipe - Wale47
 - [Name] - [GitHub Username]
 ## Project Description
 A connect platform that helps students find internships/jobs.
