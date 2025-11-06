@@ -5,154 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Metador3 — Bridging Students and Companies</title>
   <meta name="description" content="Join a platform that connects students with real-world opportunities verified by institutions nationwide." />
-  <link rel="icon" href="images/favicon.png" />
-  <style>
-    /* ===========================
-       Metador3 — Design Tokens
-       =========================== */
-    :root{
-      /* Brand */
-      --brand: #6c63ff;            /* primary (purple) */
-      --brand-2: #dd7ad4;          /* accent (pink pill) */
-      --brand-ink: #0b0f14;
-
-      /* Surface */
-      --bg: #bfe7f7;               /* landing light blue from figma */
-      --surface: #ffffff;
-      --surface-2: #f2f6fb;
-
-      /* Text */
-      --text: #101418;
-      --muted: #5b6370;
-
-      /* Layout */
-      --maxw: 1120px;
-      --radius-lg: 18px;
-      --radius-sm: 999px;          /* pills */
-      --shadow-1: 0 8px 28px rgba(16,20,24,.12);
-      --shadow-2: 0 2px 10px rgba(16,20,24,.08);
-
-      /* Spacing (fluid) */
-      --space-1: clamp(6px, .6vw, 10px);
-      --space-2: clamp(10px, 1.0vw, 14px);
-      --space-3: clamp(14px, 1.6vw, 20px);
-      --space-4: clamp(18px, 2.2vw, 28px);
-      --space-5: clamp(28px, 3.2vw, 44px);
-      --space-6: clamp(40px, 4.8vw, 72px);
-
-      /* Typography */
-      --font: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      --h1: clamp(32px, 5.2vw, 60px);
-      --h2: clamp(22px, 3.0vw, 34px);
-      --h3: clamp(18px, 2.2vw, 22px);
-      --body: clamp(15px, 1.3vw, 17px);
-      --small: clamp(13px, 1.1vw, 14px);
-
-      /* Focus ring */
-      --ring: 0 0 0 3px rgba(108,99,255,.30);
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:var(--font); color:var(--text);
-      background: linear-gradient(180deg, var(--bg) 0%, #e8f5ff 100%);
-      line-height:1.55;
-      text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;
-    }
-    img{max-width:100%; display:block}
-    a{color:inherit; text-decoration:none}
-    .container{max-width:var(--maxw); margin:auto; padding:0 var(--space-3)}
-
-    /* ===== Navbar ===== */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      background:rgba(255,255,255,.6); backdrop-filter:saturate(180%) blur(10px);
-      border-bottom:1px solid rgba(16,20,24,.06);
-    }
-    .nav-wrap{display:flex; align-items:center; justify-content:space-between; padding: var(--space-2) 0;}
-    .brand{display:flex; gap:12px; align-items:center; font-weight:800; letter-spacing:.2px}
-    .brand img{width:36px; height:36px; border-radius:10px; box-shadow:var(--shadow-2)}
-    .nav-links{display:flex; gap:16px; align-items:center; font-weight:600}
-    .roles{display:flex; gap:10px; align-items:center}
-
-    .pill{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding: 10px 16px; border-radius: var(--radius-sm);
-      border:1px solid rgba(16,20,24,.10); background: var(--surface);
-      box-shadow: var(--shadow-2); font-weight:700; font-size: var(--small);
-    }
-    .pill.ghost{background:transparent}
-    .pill.accent{background: var(--brand-2); color:#fff; border-color: transparent}
-    .pill.primary{background: var(--brand); color:#fff; border-color: transparent}
-
-    .pill:focus-visible{outline:none; box-shadow: var(--ring)}
-    .nav a{opacity:.9}
-    .nav a:hover{opacity:1; transform: translateY(-1px)}
-
-    /* ===== Hero ===== */
-    .hero{padding: var(--space-6) 0 var(--space-5); }
-    .hero-grid{
-      display:grid; grid-template-columns:1.1fr .9fr; gap: var(--space-5); align-items:center;
-    }
-    .eyebrow{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 14px; border-radius: var(--radius-sm);
-      background: #fff; border:1px solid rgba(16,20,24,.08); box-shadow:var(--shadow-2);
-      font-weight:800; color: var(--brand-ink); font-size: var(--small); text-transform:uppercase; letter-spacing:.4px;
-    }
-    .hero h1{font-size: var(--h1); line-height:1.1; margin: var(--space-3) 0 var(--space-2)}
-    .hero p{color:var(--muted); font-size: var(--body); margin:0 0 var(--space-4)}
-    .cta{display:flex; gap:12px; flex-wrap:wrap}
-    .hero-card{
-      background: #fff; padding: var(--space-4); border-radius: var(--radius-lg); box-shadow: var(--shadow-1);
-    }
-
-    /* ===== Features ===== */
-    .features{padding: var(--space-6) 0}
-    .features h2{font-size: var(--h2); margin:0 0 var(--space-4)}
-    .grid{
-      display:grid; gap: var(--space-4);
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .card{
-      background: #fff; border:1px solid rgba(16,20,24,.06);
-      padding: var(--space-4); border-radius: var(--radius-lg); box-shadow: var(--shadow-1);
-    }
-    .card h3{font-size: var(--h3); margin:0 0 6px}
-    .card p{margin:0; color: var(--muted)}
-    .badge{
-      display:inline-block; font-size: var(--small); font-weight:800;
-      color:#fff; background: var(--brand-2); padding:6px 12px; border-radius: var(--radius-sm);
-      margin-bottom:10px;
-    }
-
-    /* ===== Footer ===== */
-    .footer{border-top:1px solid rgba(16,20,24,.08); background: #fff}
-    .footer .container{display:flex; align-items:center; justify-content:space-between; padding: var(--space-4)  var(--space-3)}
-    .footer small{color: var(--muted)}
-
-    /* ===== Responsive ===== */
-    @media (max-width: 960px){
-      .nav-links{display:none}
-      .hero-grid{grid-template-columns:1fr; text-align:center}
-      .hero .cta{justify-content:center}
-      .grid{grid-template-columns: 1fr}
-    }
-
-    /* ===== Motion prefs ===== */
-    @media (prefers-reduced-motion: reduce){
-      *{animation:none !important; transition:none !important}
-    }
-  </style>
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <!-- ========== NAVBAR ========== -->
+
+  <!-- NAVBAR -->
   <header class="nav">
     <div class="container nav-wrap">
       <a class="brand" href="/">
-        <!-- Replace with your real logo -->
-        <img src="images/logo.png" alt="Metador3 logo" />
+        <img src="images/Metador3Logo.png" alt="Metador3 logo" />
         <span>Metador3.com</span>
       </a>
 
@@ -170,7 +32,7 @@
     </div>
   </header>
 
-  <!-- ========== HERO ========== -->
+  <!-- HERO -->
   <section id="home" class="hero">
     <div class="container hero-grid">
       <div class="hero-text">
@@ -186,14 +48,12 @@
         </div>
       </div>
 
-      <div class="hero-card" role="img" aria-label="Illustration of projects and matches">
-        <!-- You can swap this for a real illustration/screenshot -->
-        <img src="images/hero.png" alt="Students discovering verified projects" />
-      </div>
+      <!-- Decorative card (no hero image needed) -->
+      <div class="hero-card" aria-hidden="true"></div>
     </div>
   </section>
 
-  <!-- ========== FEATURES ========== -->
+  <!-- FEATURES -->
   <section id="how" class="features">
     <div class="container">
       <h2>Why Metador3?</h2>
@@ -220,7 +80,7 @@
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <small>© 2025 Metador3 — Project Connect</small>
@@ -229,5 +89,7 @@
       </div>
     </div>
   </footer>
+
 </body>
 </html>
+
