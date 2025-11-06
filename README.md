@@ -38,10 +38,10 @@ The template includes the following structure:
 - Designed and implemented color scheme
 - Created footer component
 - [List other specific contributions]
-### [Team Member 3 Name]
-- Implemented hero section styling
-- Made site responsive for mobile devices
-- [List other specific contributions]
+### Wale Fadipe
+- Added README entry and setup local dev — Wale
+- 
+- 
 ### [Team Member 4 Name]
 -
 -
