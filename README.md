@@ -32,9 +32,10 @@ The template includes the following structure:
 ```
 ## Individual Contributions
 ### Dang Huy Nguyen
-- Created github repo
+- Created GitHub repo
 - Created navbar and footer
 - Composed landing page
+- Created and designed student-dashboard page
 ### Enock Mugisha
 - [List other specific contributions]
 ### Wale Fadipe
