@@ -1,111 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Applicants</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Applicants — Company Dashboard</title>
 
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <style>
+    /* keeps the page readable for a moment until styles.css loads */
+    body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0 20px; color:#111; }
+  </style>
+</head>
 <body>
 
-<header class="nav">
+  <header class="nav">
     <div class="container nav-wrap">
-        <a class="brand" href="/">
-            <img src="images/Metador3Logo.png" alt="Metador3 logo" />
-            <span>Metador3.com</span>
-        </a>
+      <a class="brand" href="/">
+        <img src="images/Metador3Logo.png" alt="Metador3 logo" style="height:36px;vertical-align:middle" />
+        <span>Metador3.com</span>
+      </a>
 
-        <nav class="nav-links">
-            <a class="pill ghost pressable" href="index.html">Home</a>
-            <a class="pill ghost pressable" href="projects.html">Projects</a>
-            <a class="pill ghost pressable" href="company-applicants.html">Company</a>
-        </nav>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="pill ghost pressable" href="index.html">Home</a>
+        <a class="pill ghost pressable" href="projects.html">Projects</a>
+        <a class="pill ghost pressable" href="company-dashboard.html">Company</a>
+      </nav>
     </div>
-</header>
+  </header>
 
-<div class="container">
-    <h1>Applicants</h1>
+  <main class="applicants-page">
+    <h1 class="page-title">Applicants</h1>
 
-    <!-- Search + Filter -->
-    <div class="filter-box">
-        <input type="text" id="searchInput" placeholder="Search applicants…">
+    <div class="filter-bar">
+      <label>Search by Name:</label>
+      <input id="searchInput" type="text" placeholder="Search applicants..." />
 
-        <select id="statusFilter">
-            <option value="All">All Statuses</option>
-            <option value="Applied">Applied</option>
-            <option value="Started">Started</option>
-            <option value="Offered">Offered</option>
-        </select>
+      <label>Status:</label>
+      <select id="statusFilter">
+        <option value="all">All</option>
+        <option value="applied">Applied</option>
+        <option value="started">Started</option>
+        <option value="offered">Offered</option>
+      </select>
     </div>
 
-    <div id="applicantsList">
-
-        <div class="applicant-card" data-status="Applied" data-name="John Doe" data-match="70">
-            <div>
-                <h2>John Doe</h2>
-                <p>Match: <strong class="match-percent">70%</strong></p>
-                <p>Applied</p>
-            </div>
-            <a href="student-dashboard.html" class="see-profile-btn">See Profile</a>
+    <div id="applicantList" class="applicant-list">
+      <div class="applicant-card" data-name="John Doe" data-status="applied">
+        <div>
+          <h3>John Doe</h3>
+          <p class="match">Match: <strong>70%</strong></p>
+          <p class="status">Applied</p>
         </div>
+        <a class="profile-btn" href="student-dashboard.html">See Profile</a>
+      </div>
 
-        <div class="applicant-card" data-status="Started" data-name="Emily Smith" data-match="50">
-            <div>
-                <h2>Emily Smith</h2>
-                <p>Match: <strong class="match-percent">50%</strong></p>
-                <p>Started</p>
-            </div>
-            <a href="student-dashboard.html" class="see-profile-btn">See Profile</a>
+      <div class="applicant-card" data-name="Emily Smith" data-status="started">
+        <div>
+          <h3>Emily Smith</h3>
+          <p class="match">Match: <strong>50%</strong></p>
+          <p class="status">Started</p>
         </div>
+        <a class="profile-btn" href="student-dashboard.html">See Profile</a>
+      </div>
 
-        <div class="applicant-card" data-status="Offered" data-name="Michael Lee" data-match="90">
-            <div>
-                <h2>Michael Lee</h2>
-                <p>Match: <strong class="match-percent">90%</strong></p>
-                <p>Offered</p>
-            </div>
-            <a href="student-dashboard.html" class="see-profile-btn">See Profile</a>
+      <div class="applicant-card" data-name="Michael Lee" data-status="offered">
+        <div>
+          <h3>Michael Lee</h3>
+          <p class="match">Match: <strong>90%</strong></p>
+          <p class="status">Offered</p>
         </div>
-
+        <a class="profile-btn" href="student-dashboard.html">See Profile</a>
+      </div>
     </div>
-</div>
+  </main>
 
-<script>
-document.querySelectorAll(".applicant-card").forEach(card => {
-    const match = parseInt(card.dataset.match);
+  <footer class="footer">
+    <div class="container">
+      <small>© 2025 Metador3 — Project Connect</small>
+    </div>
+  </footer>
 
-    if (match >= 80) {
-        card.classList.add("match-green");
-    } else if (match >= 60) {
-        card.classList.add("match-yellow");
-    } else {
-        card.classList.add("match-red");
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const statusFilter = document.getElementById('statusFilter');
+
+    function applyFilters() {
+      const q = (searchInput.value || '').toLowerCase();
+      const st = (statusFilter.value || 'all').toLowerCase();
+      document.querySelectorAll('.applicant-card').forEach(card => {
+        const name = (card.dataset.name || '').toLowerCase();
+        const status = (card.dataset.status || '').toLowerCase();
+        const visible = (name.includes(q) || q === '') && (st === 'all' || status === st);
+        card.style.display = visible ? 'flex' : 'none';
+      });
     }
-});
 
-const searchInput = document.getElementById("searchInput");
-const statusFilter = document.getElementById("statusFilter");
-const applicants = document.querySelectorAll(".applicant-card");
+    searchInput.addEventListener('input', applyFilters);
+    statusFilter.addEventListener('change', applyFilters);
 
-function updateFilters() {
-    const searchValue = searchInput.value.toLowerCase();
-    const statusValue = statusFilter.value;
-
-    applicants.forEach(card => {
-        const name = card.dataset.name.toLowerCase();
-        const status = card.dataset.status;
-
-        const matchesSearch = name.includes(searchValue);
-        const matchesStatus = statusValue === "All" || status === statusValue;
-
-        card.style.display = (matchesSearch && matchesStatus) ? "flex" : "none";
-    });
-}
-
-searchInput.addEventListener("input", updateFilters);
-statusFilter.addEventListener("change", updateFilters);
-</script>
-
+    document.querySelectorAll('.profile-btn').forEach(a => a.setAttribute('href','student-dashboard.html'));
+  </script>
 </body>
 </html>
