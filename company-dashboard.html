@@ -1,97 +1,109 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Applicants — Company Dashboard</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Applicants — Company Dashboard</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <!-- small page-specific safety CSS in case styles.css didn't load yet -->
+  <style>
+    /* keeps the page readable for a moment until styles.css loads */
+    body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0 20px; color:#111; }
+  </style>
 </head>
-
 <body>
 
-<header class="navbar">
-    <div class="logo">Metador3.com</div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-    </nav>
-</header>
+  <header class="nav">
+    <div class="container nav-wrap">
+      <a class="brand" href="/">
+        <img src="images/Metador3Logo.png" alt="Metador3 logo" style="height:36px;vertical-align:middle" />
+        <span>Metador3.com</span>
+      </a>
 
-<h1 class="page-title">Applicants</h1>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="pill ghost pressable" href="index.html">Home</a>
+        <a class="pill ghost pressable" href="projects.html">Projects</a>
+        <a class="pill ghost pressable" href="company-dashboard.html">Company</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="filter-bar">
-    <label>Search by Name:</label>
-    <input type="text" id="searchInput" placeholder="Search applicants...">
+  <main class="applicants-page">
+    <h1 class="page-title">Applicants</h1>
 
-    <label>Status:</label>
-    <select id="statusFilter">
+    <div class="filter-bar">
+      <label>Search by Name:</label>
+      <input id="searchInput" type="text" placeholder="Search applicants..." />
+
+      <label>Status:</label>
+      <select id="statusFilter">
         <option value="all">All</option>
         <option value="applied">Applied</option>
         <option value="started">Started</option>
         <option value="offered">Offered</option>
-    </select>
-</div>
-
-<div id="applicantList">
-
-    <div class="applicant-card" data-name="John Doe" data-status="applied">
-        <div>
-            <h3>John Doe</h3>
-            <p class="match">Match: <strong>70%</strong></p>
-            <p class="status">Applied</p>
-        </div>
-        <a href="student-profile.html" class="profile-btn">See Profile</a>
+      </select>
     </div>
 
-    <div class="applicant-card" data-name="Emily Smith" data-status="started">
+    <div id="applicantList" class="applicant-list">
+      <!-- make sure data-name/data-status exist for filtering -->
+      <div class="applicant-card" data-name="John Doe" data-status="applied">
         <div>
-            <h3>Emily Smith</h3>
-            <p class="match">Match: <strong>50%</strong></p>
-            <p class="status">Started</p>
+          <h3>John Doe</h3>
+          <p class="match">Match: <strong>70%</strong></p>
+          <p class="status">Applied</p>
         </div>
-        <a href="student-profile.html" class="profile-btn">See Profile</a>
-    </div>
+        <a class="profile-btn" href="student-dashboard.html">See Profile</a>
+      </div>
 
-    <div class="applicant-card" data-name="Michael Lee" data-status="offered">
+      <div class="applicant-card" data-name="Emily Smith" data-status="started">
         <div>
-            <h3>Michael Lee</h3>
-            <p class="match">Match: <strong>90%</strong></p>
-            <p class="status">Offered</p>
+          <h3>Emily Smith</h3>
+          <p class="match">Match: <strong>50%</strong></p>
+          <p class="status">Started</p>
         </div>
-        <a href="student-profile.html" class="profile-btn">See Profile</a>
+        <a class="profile-btn" href="student-dashboard.html">See Profile</a>
+      </div>
+
+      <div class="applicant-card" data-name="Michael Lee" data-status="offered">
+        <div>
+          <h3>Michael Lee</h3>
+          <p class="match">Match: <strong>90%</strong></p>
+          <p class="status">Offered</p>
+        </div>
+        <a class="profile-btn" href="student-dashboard.html">See Profile</a>
+      </div>
     </div>
+  </main>
 
-</div>
+  <footer class="footer">
+    <div class="container">
+      <small>© 2025 Metador3 — Project Connect</small>
+    </div>
+  </footer>
 
-<footer class="footer">
-    © 2025 Metador3 — Project Connect
-</footer>
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const statusFilter = document.getElementById('statusFilter');
 
-<script>
-    const searchInput = document.getElementById("searchInput");
-    searchInput.addEventListener("input", () => {
-        const value = searchInput.value.toLowerCase();
-        document.querySelectorAll(".applicant-card").forEach(card => {
-            const name = card.dataset.name.toLowerCase();
-            card.style.display = name.includes(value) ? "flex" : "none";
-        });
-    });
+    function applyFilters() {
+      const q = (searchInput.value || '').toLowerCase();
+      const st = (statusFilter.value || 'all').toLowerCase();
+      document.querySelectorAll('.applicant-card').forEach(card => {
+        const name = (card.dataset.name || '').toLowerCase();
+        const status = (card.dataset.status || '').toLowerCase();
+        const visible = (name.includes(q) || q === '') && (st === 'all' || status === st);
+        card.style.display = visible ? 'flex' : 'none';
+      });
+    }
 
-    const statusFilter = document.getElementById("statusFilter");
-    statusFilter.addEventListener("change", () => {
-        const value = statusFilter.value;
-        document.querySelectorAll(".applicant-card").forEach(card => {
-            const status = card.dataset.status;
+    searchInput.addEventListener('input', applyFilters);
+    statusFilter.addEventListener('change', applyFilters);
 
-            if (value === "all" || value === status) {
-                card.style.display = "flex";
-            } else {
-                card.style.display = "none";
-            }
-        });
-    });
-</script>
-
+    document.querySelectorAll('.profile-btn').forEach(a => a.setAttribute('href','student-dashboard.html'));
+  </script>
 </body>
 </html>
+       
