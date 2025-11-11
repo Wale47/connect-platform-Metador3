@@ -21,66 +21,6 @@
             </nav>
         </div>
     </header>
-<main class="applicants-page">
-
-    <h1 class="title">Applicants</h1>
-
-    <div class="filters">
-        <label>Search by Name:</label>
-        <input type="text" id="searchName" placeholder="Search applicants...">
-
-        <label>Status:</label>
-        <select id="filterStatus">
-            <option value="all">All</option>
-            <option value="Applied">Applied</option>
-            <option value="Started">Started</option>
-            <option value="Offered">Offered</option>
-        </select>
-    </div>
-
-    <div id="applicantList" class="applicant-list">
-
-        <div class="applicant-row" data-name="John Doe" data-status="Applied">
-            <div class="left">
-                <div class="avatar"></div>
-                <span class="name">John Doe</span>
-            </div>
-
-            <div class="match">70%</div>
-
-            <div class="status Applied">Applied</div>
-
-            <a href="student-dashboard.html" class="profile-btn">See Profile</a>
-        </div>
-
-        <div class="applicant-row" data-name="Emily Smith" data-status="Started">
-            <div class="left">
-                <div class="avatar red"></div>
-                <span class="name">Emily Smith</span>
-            </div>
-
-            <div class="match">50%</div>
-
-            <div class="status Started">Started</div>
-
-            <a href="student-dashboard.html" class="profile-btn">See Profile</a>
-        </div>
-
-        <div class="applicant-row" data-name="Michael Lee" data-status="Offered">
-            <div class="left">
-                <div class="avatar green"></div>
-                <span class="name">Michael Lee</span>
-            </div>
-
-            <div class="match">90%</div>
-
-            <div class="status Offered">Offered</div>
-
-            <a href="student-dashboard.html" class="profile-btn">See Profile</a>
-        </div>
-
-    </div>
-</main>
 
     <footer class="footer">
         <div class="container">
@@ -90,33 +30,7 @@
             </div>
         </div>
     </footer>
-    <script>
-const searchInput = document.getElementById("searchName");
-const statusFilter = document.getElementById("filterStatus");
-const applicants = document.querySelectorAll(".applicant-row");
-
-function filterApplicants() {
-    let searchValue = searchInput.value.toLowerCase();
-    let statusValue = statusFilter.value;
-
-    applicants.forEach(row => {
-        const name = row.dataset.name.toLowerCase();
-        const status = row.dataset.status;
-
-        const matchesName = name.includes(searchValue);
-        const matchesStatus = (statusValue === "all" || status === statusValue);
-
-        if (matchesName && matchesStatus) {
-            row.style.display = "flex";
-        } else {
-            row.style.display = "none";
-        }
-    });
-}
-
-searchInput.addEventListener("input", filterApplicants);
-statusFilter.addEventListener("change", filterApplicants);
-</script>
+   
 
 </body>
 </html>
