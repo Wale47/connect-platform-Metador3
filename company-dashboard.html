@@ -1,2 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Applicants — Company Dashboard</title>
 
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <style>
+    /* keeps the page readable for a moment until styles.css loads */
+    body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0 20px; color:#111; }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <img src="images/Metador3Logo.png" alt="Metador3 logo" style="height:36px;vertical-align:middle" />
+        <span>Metador3.com</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a class="pill ghost pressable" href="index.html">Home</a>
+        <a class="pill ghost pressable" href="projects.html">Projects</a>
+        <a class="pill ghost pressable" href="company-dashboard.html">Company</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="applicants-page">
+    <h1 class="page-title">Applicants</h1>
+
+    <div class="filter-bar">
+      <label>Search by Name:</label>
+      <input id="searchInput" type="text" placeholder="Search applicants..." />
+
+      <label>Status:</label>
+      <select id="statusFilter">
+        <option value="all">All</option>
+        <option value="applied">Applied</option>
+        <option value="started">Started</option>
+        <option value="offered">Offered</option>
+      </select>
+    </div>
+
+    <div id="applicantList" class="applicant-list">
+      <div class="applicant-card" data-name="Student 1" data-status="applied">
+        <div>
+          <h3>Student 1</h3>
+          <p class="match">Match: <strong>70%</strong></p>
+          <p class="status">Applied</p>
+        </div>
+        <a class="profile-btn" href="student-dashboard.html">See Profile</a>
+      </div>
+
+      <div class="applicant-card" data-name="Student 2" data-status="started">
+        <div>
+          <h3>Student 2</h3>
+          <p class="match">Match: <strong>50%</strong></p>
+          <p class="status">Started</p>
+        </div>
+        <a class="profile-btn" href="student-dashboard.html">See Profile</a>
+      </div>
+
+      <div class="applicant-card" data-name="Student 3" data-status="offered">
+        <div>
+          <h3>Student 3</h3>
+          <p class="match">Match: <strong>90%</strong></p>
+          <p class="status">Offered</p>
+        </div>
+        <a class="profile-btn" href="student-dashboard.html">See Profile</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small>© 2025 Metador3 — Project Connect</small>
+    </div>
+  </footer>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const statusFilter = document.getElementById('statusFilter');
+
+    function applyFilters() {
+      const q = (searchInput.value || '').toLowerCase();
+      const st = (statusFilter.value || 'all').toLowerCase();
+      document.querySelectorAll('.applicant-card').forEach(card => {
+        const name = (card.dataset.name || '').toLowerCase();
+        const status = (card.dataset.status || '').toLowerCase();
+        const visible = (name.includes(q) || q === '') && (st === 'all' || status === st);
+        card.style.display = visible ? 'flex' : 'none';
+      });
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    statusFilter.addEventListener('change', applyFilters);
+
+    document.querySelectorAll('.profile-btn').forEach(a => a.setAttribute('href','student-dashboard.html'));
+  </script>
+</body>
+</html>
  
