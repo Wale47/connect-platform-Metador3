@@ -40,6 +40,9 @@ The template includes the following structure:
 - [List other specific contributions]
 ### Wale Fadipe
 - Added README entry and setup local dev — Wale
+- Designed and coded the full landing page layout
+- Added a new dedicated CSS stylesheet for improved UI styling
+- Archive and reorganized the previous CSS file into a backup version
 ### Daniel Onwudinanti
 - Composed Projects Page
 - Debugged CSS animation on the landing page
